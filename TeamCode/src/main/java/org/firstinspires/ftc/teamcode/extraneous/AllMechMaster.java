@@ -38,6 +38,10 @@ public class AllMechMaster {
 
         horizontalRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        elevator = hardwareMap.get(DcMotor.class, "elevator");
+        elevator.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        elevator.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
         frontLeft = hardwareMap.get(DcMotorEx.class, "left front");
         rearLeft = hardwareMap.get(DcMotorEx.class, "left rear");
         rearRight = hardwareMap.get(DcMotorEx.class, "right rear");
@@ -46,9 +50,7 @@ public class AllMechMaster {
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         rearLeft.setDirection(DcMotor.Direction.REVERSE);
 
-        elevator = hardwareMap.get(DcMotor.class, "elevator");
-        elevator.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        elevator.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
 
         // initialize all the PID controllers
         elevatorController = new PIDController(pv, iv, dv);
